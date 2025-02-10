@@ -2,9 +2,18 @@ from crewai import Agent, Task, Crew, LLM
 from crewai_tools import SerperDevTool
 import streamlit as st
 from dotenv import load_dotenv
+import os
 
 load_dotenv()
 
+os.environ['GEMINI_API_KEY'] = os.getenv("GEMINI_API_KEY")
+
+llm=LLM(
+    model=os.getenv("GEMINI_LLM_MODEL"),
+    verbose=True,
+    google_api_key=os.getenv("GEMINI_API_KEY"),
+
+)
 # Streamlit Page Config
 st.set_page_config(page_title="Content Researcher & Writer", page_icon="@@", layout="wide")
 
@@ -44,7 +53,7 @@ with st.sidebar:
         """)
 
 def generate_content(topic):
-    llm = LLM(model="gemini-1.5-flash-002")
+    # llm = LLM(model="gemini-1.5-flash-002")
 
     # Tool 2
     search_tool = SerperDevTool(n=10)

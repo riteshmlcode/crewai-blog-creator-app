@@ -7,7 +7,7 @@ load_dotenv()
 topic= "Medical Industry using Generative AI"
 
 # Tool 1
-llm = LLM(model="gpt-4o-mini")
+llm = LLM(model="gemini-2.0-flash")
 
 # Tool 2
 search_tool = SerperDevTool(n=10)
